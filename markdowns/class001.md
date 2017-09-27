@@ -131,4 +131,20 @@
 
 ---
 
+
+# 我的Ruby书架
+
+  - Ruby基础教程, 松本行弘
+  - Ruby元编程1，2版
+
+  - Effective Ruby
+  - 重构Ruby版
+
+  - Ruby最佳实践
+  - Ruby原理剖析
+
+  - 代码的未来
+  - 松本行弘的程式世界
+
+---
 # Thank you!
