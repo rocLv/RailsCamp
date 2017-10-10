@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<!--
+  Copyright 2010 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  Original slides: Marcin Wichary (mwichary@google.com)
+  Modifications: Ernest Delgado (ernestd@google.com)
+                 Alex Russell (slightlyoff@chromium.org)
+
+  landslide modifications: Adam Zapletal (adamzap@gmail.com)
+                           Nicolas Perriault (nperriault@gmail.com)
+-->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Ruby基础</title>
+    <!-- Styles -->
+    
+    <link rel="stylesheet" media="print" href="file:///Library/Python/2.7/site-packages/landslide/themes/default/css/print.css">
+    <link rel="stylesheet" media="screen, projection" href="file:///Library/Python/2.7/site-packages/landslide/themes/default/css/screen.css">
+    
+    
+    <!-- /Styles -->
+    <!-- Javascripts -->
+    
+    <script type="text/javascript" src="file:///Library/Python/2.7/site-packages/landslide/themes/default/js/slides.js"></script>
+    
+    
+    
+    <!-- /Javascripts -->
+</head>
+<body>
+  <div id="blank"></div>
+  <div class="presentation">
+    <div id="current_presenter_notes">
+      <div id="presenter_note"></div>
+    </div>
+    <div class="slides">
+      
+      <!-- slide source: markdowns/class003.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-1">
+          <div class="inner">
+            
+            <header><h1>Ruby基础</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class003.md">markdowns/class003.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              1/22
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class003.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-2">
+          <div class="inner">
+            
+            <header><h1>提纲</h1></header>
+            
+            
+            <section><ul>
+<li>Ruby的历史</li>
+<li>Ruby的设计理念</li>
+<li>计算机科学和<strong>抽象</strong></li>
+<li>编辑器（语法高亮, 代码提示）</li>
+<li>Ruby初步</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class003.md">markdowns/class003.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              2/22
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class003.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-3">
+          <div class="inner">
+            
+            <header><h1>Ruby的历史</h1></header>
+            
+            
+            <section><p><img alt="松本行弘" src="file:///Users/wangqsh/Code/RailsCamp/markdowns/../slides/theme/images/Yukihiro_Matsumoto.JPG" title="=150x150" /></p>
+<ul>
+<li>创建于上世纪90年代中期</li>
+<li>作者： 松本行弘（Yukihiro Matsumoto）Matz</li>
+</ul>
+<p>(编程语言的历史)</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class003.md">markdowns/class003.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              3/22
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class003.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-4">
+          <div class="inner">
+            
+            <header><h1>Ruby的理念</h1></header>
+            
+            
+            <section><ul>
+<li>让程序员感到幸福</li>
+<li>把每个Ruby程序员当成合格的程序员</li>
+<li>程序是写给人看的，即humans first，computers second</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class003.md">markdowns/class003.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              4/22
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class003.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-5">
+          <div class="inner">
+            
+            <header><h1>计算机科学和抽象层</h1></header>
+            
+            
+            <section><ul>
+<li>
+<p><em>抽象</em>： 确保使用的人不需要理解怎么内部的实现机制（黑盒）</p>
+<p>举例：
+   -  手机：打电话，发短信（用户不用关心怎么做到的）</p>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class003.md">markdowns/class003.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              5/22
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class003.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-6">
+          <div class="inner">
+            
+            <header><h1>计算机科学和抽象层</h1></header>
+            
+            
+            <section><ul>
+<li><em>接口</em>： 以手机为例，键盘，发送短信的界面</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class003.md">markdowns/class003.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/22
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class003.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-7">
+          <div class="inner">
+            
+            <header><h1>计算机科学和抽象层</h1></header>
+            
+            
+            <section><p>领域专属语言DSL： Rails，DSL, Rspec, Sinatra</p>
+<div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="lineno">2 </span>  <span class="n">visit</span> <span class="n">url</span>
+<span class="lineno">3 </span><span class="k">end</span>
+<span class="lineno">4 </span>
+<span class="lineno">5 </span><span class="n">get</span> <span class="s1">&#39;http://localhost:3000&#39;</span>
+</pre></div>
+
+<p><code>get</code>就可以看成是DSL</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class003.md">markdowns/class003.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              7/22
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class003.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-8">
+          <div class="inner">
+            
+            <header><h1>The Goal</h1></header>
+            
+            
+            <section><blockquote>
+<p>to show you Ruby, so that when you come across higher level abstractions
+     and DSLs, you can recognize it as just Ruby code.</p>
+</blockquote></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class003.md">markdowns/class003.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              8/22
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class003.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-9">
+          <div class="inner">
+            
+            <header><h1>成为程序员的心路历程</h1></header>
+            
+            
+            <section><p>难吗？ <strong>其实不难，但也不易！</strong></p>
+<p>度过不适期，就会逐步适应，逐步享受</p>
+<ul>
+<li>忍耐</li>
+<li>多练</li>
+<li>应用概念</li>
+</ul>
+<blockquote>
+<p>There is a shift in thinking that will take place and you will develop the
+ability to think deeply and clearly about a given problem</p>
+</blockquote></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class003.md">markdowns/class003.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              9/22
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class003.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-10">
+          <div class="inner">
+            
+            <header><h1>准备工作</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class003.md">markdowns/class003.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              10/22
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class003.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-11">
+          <div class="inner">
+            
+            <header><h1>编辑器</h1></header>
+            
+            
+            <section><ul>
+<li>Sublime Text</li>
+<li>TextMate</li>
+<li>Atom</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class003.md">markdowns/class003.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              11/22
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class003.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-12">
+          <div class="inner">
+            
+            
+            <section><p><img alt="" src="file:///Users/wangqsh/Code/RailsCamp/markdowns/../slides/theme/images/gaoneng.jpg" title="Title&quot; width=&quot;400px&quot; height=&quot;400px" /></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class003.md">markdowns/class003.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              12/22
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class003.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-13">
+          <div class="inner">
+            
+            <header><h1>Hello, world!</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="err">$</span> <span class="n">mkdir</span> <span class="n">class003</span>
+<span class="lineno"> 2 </span><span class="err">$</span> <span class="n">cd</span> <span class="n">class003</span>
+<span class="lineno"> 3 </span><span class="err">$</span> <span class="n">git</span> <span class="n">init</span>
+<span class="lineno"> 4 </span><span class="err">$</span> <span class="n">touch</span> <span class="n">hello</span><span class="o">.</span><span class="n">rb</span>
+<span class="lineno"> 5 </span><span class="err">$</span> <span class="n">mate</span> <span class="n">hello</span><span class="o">.</span><span class="n">rb</span>
+<span class="lineno"> 6 </span>
+<span class="lineno"> 7 </span><span class="nb">puts</span> <span class="s1">&#39;Hello, world!&#39;</span>
+<span class="lineno"> 8 </span>
+<span class="lineno"> 9 </span><span class="err">$</span> <span class="n">ruby</span> <span class="n">hello</span><span class="o">.</span><span class="n">rb</span>
+<span class="lineno">10 </span>
+<span class="lineno">11 </span><span class="err">$</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">pry</span>
+<span class="lineno">12 </span><span class="c1"># hello.rb</span>
+<span class="lineno">13 </span><span class="nb">print</span> <span class="s1">&#39;hello&#39;</span>
+<span class="lineno">14 </span><span class="nb">binding</span><span class="o">.</span><span class="n">pry</span>
+<span class="lineno">15 </span><span class="nb">print</span> <span class="s1">&#39;, world!&#39;</span>
+<span class="lineno">16 </span>
+<span class="lineno">17 </span><span class="err">$</span> <span class="n">ruby</span> <span class="n">hello</span><span class="o">.</span><span class="n">rb</span>
+<span class="lineno">18 </span>
+<span class="lineno">19 </span><span class="err">$</span> <span class="n">pry</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class003.md">markdowns/class003.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              13/22
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class003.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-14">
+          <div class="inner">
+            
+            <header><h1>基本代码风格</h1></header>
+            
+            
+            <section><ul>
+<li>不用Tab，用2个空格</li>
+<li>用 <strong>#</strong> 注释</li>
+<li>方法名用蛇形命名法</li>
+<li>变量名用蛇形命名法</li>
+<li>常量全部大写</li>
+<li>类名、模块名用驼峰命名法</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class003.md">markdowns/class003.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              14/22
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class003.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-15">
+          <div class="inner">
+            
+            <header><h1>查看文档</h1></header>
+            
+            
+            <section><p><img alt="" src="https://d2aw5xe2jldque.cloudfront.net/books/ruby/images/ruby_doc.jpg" /></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class003.md">markdowns/class003.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              15/22
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class003.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-16">
+          <div class="inner">
+            
+            <header><h1>踏上Ruby程序员的里程</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class003.md">markdowns/class003.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              16/22
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class003.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-17">
+          <div class="inner">
+            
+            <header><h1>数据类型</h1></header>
+            
+            
+            <section><ul>
+<li>String</li>
+<li>Symbol</li>
+<li>Number</li>
+<li>Bool</li>
+<li>nil</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class003.md">markdowns/class003.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              17/22
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class003.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-18">
+          <div class="inner">
+            
+            <header><h1>操作符</h1></header>
+            
+            
+            <section><ul>
+<li>+, -, *, /</li>
+<li>%</li>
+<li>>, &lt;, !=, &gt;=, &lt;=</li>
+<li>&lt;=&gt;</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class003.md">markdowns/class003.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              18/22
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class003.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-19">
+          <div class="inner">
+            
+            <header><h1>类型转换</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class003.md">markdowns/class003.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              19/22
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class003.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-20">
+          <div class="inner">
+            
+            <header><h1>基本数据结构</h1></header>
+            
+            
+            <section><ul>
+<li>
+<p>String</p>
+</li>
+<li>
+<p>Array</p>
+</li>
+<li>
+<p>Hash</p>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class003.md">markdowns/class003.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              20/22
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class003.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-21">
+          <div class="inner">
+            
+            <header><h1>表达式</h1></header>
+            
+            
+            <section><p><strong>表达式</strong> -- 几乎ruby中所有的语句都是一个表达式</p>
+<p>特点：</p>
+<pre><code>有返回值
+
+PS: nil， exception都算
+</code></pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class003.md">markdowns/class003.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              21/22
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class003.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-22">
+          <div class="inner">
+            
+            
+            <section><p># Thank you!</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class003.md">markdowns/class003.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              22/22
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source:  -->
+      <div class="slide-wrapper">
+        <div class="slide slide-">
+          <div class="inner">
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="page_number">
+              /22
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div id="toc" class="sidebar hidden">
+    <h2>Table of Contents</h2>
+    <table>
+      <caption>Table of Contents</caption>
+      
+      <tr id="toc-row-1">
+        <th><a href="#slide1">Ruby基础</a></th>
+        <td><a href="#slide1">1</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-2">
+        <th><a href="#slide2">提纲</a></th>
+        <td><a href="#slide2">2</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-3">
+        <th><a href="#slide3">Ruby的历史</a></th>
+        <td><a href="#slide3">3</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-4">
+        <th><a href="#slide4">Ruby的理念</a></th>
+        <td><a href="#slide4">4</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-5">
+        <th><a href="#slide5">计算机科学和抽象层</a></th>
+        <td><a href="#slide5">5</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-6">
+        <th><a href="#slide6">计算机科学和抽象层</a></th>
+        <td><a href="#slide6">6</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-7">
+        <th><a href="#slide7">计算机科学和抽象层</a></th>
+        <td><a href="#slide7">7</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-8">
+        <th><a href="#slide8">The Goal</a></th>
+        <td><a href="#slide8">8</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-9">
+        <th><a href="#slide9">成为程序员的心路历程</a></th>
+        <td><a href="#slide9">9</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-10">
+        <th><a href="#slide10">准备工作</a></th>
+        <td><a href="#slide10">10</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-11">
+        <th><a href="#slide11">编辑器</a></th>
+        <td><a href="#slide11">11</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-12">
+        <th><a href="#slide12">-</a></th>
+        <td><a href="#slide12">12</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-13">
+        <th><a href="#slide13">Hello, world!</a></th>
+        <td><a href="#slide13">13</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-14">
+        <th><a href="#slide14">基本代码风格</a></th>
+        <td><a href="#slide14">14</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-15">
+        <th><a href="#slide15">查看文档</a></th>
+        <td><a href="#slide15">15</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-16">
+        <th><a href="#slide16">踏上Ruby程序员的里程</a></th>
+        <td><a href="#slide16">16</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-17">
+        <th><a href="#slide17">数据类型</a></th>
+        <td><a href="#slide17">17</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-18">
+        <th><a href="#slide18">操作符</a></th>
+        <td><a href="#slide18">18</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-19">
+        <th><a href="#slide19">类型转换</a></th>
+        <td><a href="#slide19">19</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-20">
+        <th><a href="#slide20">基本数据结构</a></th>
+        <td><a href="#slide20">20</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-21">
+        <th><a href="#slide21">表达式</a></th>
+        <td><a href="#slide21">21</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-22">
+        <th><a href="#slide22">-</a></th>
+        <td><a href="#slide22">22</a></td>
+      </tr>
+      
+      
+    </table>
+  </div>
+  
+  <div id="help" class="sidebar hidden">
+    <h2>Help</h2>
+    <table>
+      <caption>Help</caption>
+      <tr>
+        <th>Table of Contents</th>
+        <td>t</td>
+      </tr>
+      <tr>
+        <th>Exposé</th>
+        <td>ESC</td>
+      </tr>
+      <tr>
+        <th>Full screen slides</th>
+        <td>e</td>
+      </tr>
+      <tr>
+        <th>Presenter View</th>
+        <td>p</td>
+      </tr>
+      <tr>
+        <th>Source Files</th>
+        <td>s</td>
+      </tr>
+      <tr>
+        <th>Slide Numbers</th>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Toggle screen blanking</th>
+        <td>b</td>
+      </tr>
+      <tr>
+        <th>Show/hide slide context</th>
+        <td>c</td>
+      </tr>
+      <tr>
+        <th>Notes</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Help</th>
+        <td>h</td>
+      </tr>
+    </table>
+  </div>
+  <script>main()</script>
+</body>
+</html>
