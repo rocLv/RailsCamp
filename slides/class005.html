@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<!--
+  Copyright 2010 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  Original slides: Marcin Wichary (mwichary@google.com)
+  Modifications: Ernest Delgado (ernestd@google.com)
+                 Alex Russell (slightlyoff@chromium.org)
+
+  landslide modifications: Adam Zapletal (adamzap@gmail.com)
+                           Nicolas Perriault (nperriault@gmail.com)
+-->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Flow control, Loops &amp; Iterators</title>
+    <!-- Styles -->
+    
+    <link rel="stylesheet" media="print" href="file:///Library/Python/2.7/site-packages/landslide/themes/default/css/print.css">
+    <link rel="stylesheet" media="screen, projection" href="file:///Library/Python/2.7/site-packages/landslide/themes/default/css/screen.css">
+    
+    
+    <!-- /Styles -->
+    <!-- Javascripts -->
+    
+    <script type="text/javascript" src="file:///Library/Python/2.7/site-packages/landslide/themes/default/js/slides.js"></script>
+    
+    
+    
+    <!-- /Javascripts -->
+</head>
+<body>
+  <div id="blank"></div>
+  <div class="presentation">
+    <div id="current_presenter_notes">
+      <div id="presenter_note"></div>
+    </div>
+    <div class="slides">
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-1">
+          <div class="inner">
+            
+            <header><h1>Flow control, Loops &amp; Iterators</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              1/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-2">
+          <div class="inner">
+            
+            <header><h1>知识点回顾</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              2/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-3">
+          <div class="inner">
+            
+            <header><h1>变量</h1></header>
+            
+            
+            <section><ul>
+<li>局部变量</li>
+<li>实例变量</li>
+<li>类变量</li>
+<li>全局变量</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              3/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-4">
+          <div class="inner">
+            
+            <header><h1>常量</h1></header>
+            
+            
+            <section><pre><code>&gt; 全部大写，单词间用下划线分开
+</code></pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              4/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-5">
+          <div class="inner">
+            
+            <header><h1>方法定义</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="k">def</span> <span class="nf">method_name</span>
+<span class="lineno"> 2 </span>  <span class="n">do_some_thing</span>
+<span class="lineno"> 3 </span><span class="k">end</span>
+<span class="lineno"> 4 </span>
+<span class="lineno"> 5 </span><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+<span class="lineno"> 6 </span><span class="k">end</span>
+<span class="lineno"> 7 </span>
+<span class="lineno"> 8 </span><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">param_with_default</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="lineno"> 9 </span><span class="k">end</span>
+<span class="lineno">10 </span>
+<span class="lineno">11 </span><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="nb">hash</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+<span class="lineno">12 </span>  <span class="k">yield</span>
+<span class="lineno">13 </span><span class="k">end</span>
+<span class="lineno">14 </span>
+<span class="lineno">15 </span><span class="k">def</span> <span class="nf">foo</span><span class="p">;</span><span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              5/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-6">
+          <div class="inner">
+            
+            <header><h1>Excersises Answer</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-7">
+          <div class="inner">
+            
+            <header><h1>more about Array</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              7/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-8">
+          <div class="inner">
+            
+            <header><h1>数组创建</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="n">arr</span> <span class="o">=</span> <span class="nb">Array</span><span class="o">.</span><span class="n">new</span>
+<span class="lineno"> 2 </span><span class="n">arr</span> <span class="o">=</span> <span class="nb">Array</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+<span class="lineno"> 3 </span><span class="n">arr</span> <span class="o">=</span> <span class="nb">Array</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">)</span>
+<span class="lineno"> 4 </span><span class="nb">p</span> <span class="n">arr</span> <span class="c1"># =&gt; [{}, {}]</span>
+<span class="lineno"> 5 </span>
+<span class="lineno"> 6 </span><span class="n">arr</span> <span class="o">=</span> <span class="nb">Array</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="s2">&quot;item-</span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">}</span>
+<span class="lineno"> 7 </span><span class="nb">p</span> <span class="n">arr</span> <span class="c1"># =&gt; [&quot;item-0&quot;, &quot;item-1&quot;, &quot;item-2&quot;]</span>
+<span class="lineno"> 8 </span>
+<span class="lineno"> 9 </span><span class="n">arr</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># =&gt; [3]</span>
+<span class="lineno">10 </span><span class="n">arr</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">(</span><span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">]</span><span class="p">)</span> <span class="c1"># =&gt; [1,2,3]</span>
+<span class="lineno">11 </span>
+<span class="lineno">12 </span><span class="n">arr</span> <span class="o">=</span> <span class="sx">%w(hello world)</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              8/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-9">
+          <div class="inner">
+            
+            <header><h1>数组取数</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">arr</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="o">]</span>
+<span class="lineno">2 </span><span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>  <span class="c1"># =&gt; 1</span>
+<span class="lineno">3 </span><span class="n">arr</span><span class="o">[</span><span class="mi">20</span><span class="o">]</span> <span class="c1"># =&gt; nil</span>
+<span class="lineno">4 </span><span class="nb">p</span> <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">..</span><span class="mi">2</span><span class="o">]</span> <span class="c1"># =&gt; [1, 2, 3]</span>
+<span class="lineno">5 </span>
+<span class="lineno">6 </span><span class="n">arr</span><span class="o">.</span><span class="n">slice!</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># =&gt; [2, 3]</span>
+<span class="lineno">7 </span><span class="nb">p</span> <span class="n">arr</span> <span class="c1"># =&gt; [1]</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              9/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-10">
+          <div class="inner">
+            
+            <header><h1>数组插入</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="n">arr</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">]</span>
+<span class="lineno"> 2 </span><span class="n">arr</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="o">]</span><span class="p">)</span>
+<span class="lineno"> 3 </span><span class="nb">p</span> <span class="n">arr</span> <span class="c1"># =&gt; [1, [10, 20], 2, 3]</span>
+<span class="lineno"> 4 </span>
+<span class="lineno"> 5 </span><span class="n">arr</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">flatten!</span> <span class="c1"># =&gt; [1, 10, 20, 2, 3]</span>
+<span class="lineno"> 6 </span><span class="n">arr</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">*[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="o">]</span><span class="p">)</span> 
+<span class="lineno"> 7 </span><span class="nb">p</span> <span class="n">arr</span> <span class="c1"># =&gt; [1, 10, 20, 2, 3]</span>
+<span class="lineno"> 8 </span>
+<span class="lineno"> 9 </span><span class="n">arr</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">]</span>
+<span class="lineno">10 </span><span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">..</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="o">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="o">]</span>
+<span class="lineno">11 </span><span class="nb">p</span> <span class="n">arr</span> <span class="c1"># =&gt; [10, 20, 2, 3]</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              10/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-11">
+          <div class="inner">
+            
+            <header><h1>数组比较</h1></header>
+            
+            
+            <section><pre><code>&gt; Comparison — Returns an integer (-1, 0, or +1) if this array is less than,
+&gt; equal to, or greater than other_ary.
+
+!ruby
+arr = [1,2,3]
+another_arr = [1,2,4]
+
+arr &lt;=&gt; another_arr # =&gt; -1
+
+arr = [1, 5, 3]
+another_arr = [1, 2, 3]
+
+arr &lt;=&gt; another_arr # =&gt; 1 (5 is greater than 2)
+</code></pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              11/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-12">
+          <div class="inner">
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="n">arr</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span>
+<span class="lineno"> 2 </span><span class="n">another_arr</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span>
+<span class="lineno"> 3 </span>
+<span class="lineno"> 4 </span><span class="n">arr</span> <span class="o">&lt;=&gt;</span> <span class="n">another_arr</span> <span class="c1"># =&gt; nil</span>
+<span class="lineno"> 5 </span>
+<span class="lineno"> 6 </span><span class="n">arr</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span>
+<span class="lineno"> 7 </span><span class="n">another_arr</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="o">]</span>
+<span class="lineno"> 8 </span>
+<span class="lineno"> 9 </span><span class="nb">p</span> <span class="n">arr</span> <span class="o">&lt;=&gt;</span> <span class="n">another_arr</span> <span class="c1"># =&gt; -1</span>
+<span class="lineno">10 </span><span class="n">arr</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="o">]</span>
+<span class="lineno">11 </span><span class="n">another_arr</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">]</span>
+<span class="lineno">12 </span>
+<span class="lineno">13 </span><span class="n">arr</span> <span class="o">&lt;=&gt;</span> <span class="n">another_arr</span> <span class="c1"># =&gt; 1</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              12/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-13">
+          <div class="inner">
+            
+            <header><h1>数组运算</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">arr</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="o">]</span>
+<span class="lineno">2 </span><span class="n">arr2</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="s2">&quot;baz&quot;</span><span class="o">]</span>
+<span class="lineno">3 </span><span class="n">arr</span> <span class="o">+</span> <span class="n">arr2</span> <span class="c1"># =&gt; [&quot;foo&quot;, &quot;bar&quot;, &quot;bar&quot;, &quot;baz&quot;]</span>
+<span class="lineno">4 </span>
+<span class="lineno">5 </span><span class="n">arr</span> <span class="o">-</span> <span class="n">arr2</span> <span class="c1"># =&gt; [&quot;foo&quot;]</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              13/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-14">
+          <div class="inner">
+            
+            <header><h1>并集| 和交集 &amp; 运算</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">arr</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="o">]</span>
+<span class="lineno">2 </span><span class="n">arr2</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="s2">&quot;baz&quot;</span><span class="o">]</span>
+<span class="lineno">3 </span>
+<span class="lineno">4 </span><span class="nb">p</span> <span class="n">arr</span> <span class="o">|</span> <span class="n">arr2</span> <span class="c1"># =&gt; [&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;]</span>
+<span class="lineno">5 </span>
+<span class="lineno">6 </span><span class="nb">p</span> <span class="n">arr</span> <span class="o">&amp;</span> <span class="n">arr2</span> <span class="c1"># =&gt; [&quot;bar&quot;]</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              14/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-15">
+          <div class="inner">
+            
+            <header><h1>Flow Control</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              15/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-16">
+          <div class="inner">
+            
+            
+            <section><ul>
+<li>
+<p>条件表达式</p>
+</li>
+<li>
+<p>循环</p>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              16/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-17">
+          <div class="inner">
+            
+            <header><h1>条件表达式 | Condition Expressions</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="k">if</span> <span class="n">condition</span>
+<span class="lineno"> 2 </span>  <span class="nb">puts</span> <span class="s2">&quot;hello&quot;</span>
+<span class="lineno"> 3 </span><span class="k">end</span>
+<span class="lineno"> 4 </span>
+<span class="lineno"> 5 </span><span class="k">if</span> <span class="n">condition</span> <span class="k">then</span>
+<span class="lineno"> 6 </span>  <span class="n">do_some_thing</span>
+<span class="lineno"> 7 </span><span class="k">elsif</span> <span class="n">condition_2</span>
+<span class="lineno"> 8 </span>  <span class="n">do_other_thing</span>
+<span class="lineno"> 9 </span><span class="k">else</span>
+<span class="lineno">10 </span>  <span class="n">do_last_thing</span>
+<span class="lineno">11 </span><span class="k">end</span>
+<span class="lineno">12 </span>
+<span class="lineno">13 </span><span class="nb">puts</span> <span class="s1">&#39;I am valid, too&#39;</span> <span class="k">if</span> <span class="n">condition</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              17/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-18">
+          <div class="inner">
+            
+            <header><h1>Case语句</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="k">case</span> <span class="n">variable</span>
+<span class="lineno"> 2 </span><span class="k">when</span> <span class="mi">1</span>
+<span class="lineno"> 3 </span>  <span class="n">do_some_thing</span>
+<span class="lineno"> 4 </span><span class="k">when</span> <span class="sr">/regexp/</span>
+<span class="lineno"> 5 </span>  <span class="n">do_other_thing</span>
+<span class="lineno"> 6 </span><span class="k">when</span> <span class="s2">&quot;equals me&quot;</span>
+<span class="lineno"> 7 </span>  <span class="n">do_another_thing</span>
+<span class="lineno"> 8 </span><span class="k">else</span>
+<span class="lineno"> 9 </span>  <span class="n">do_default_thing</span>
+<span class="lineno">10 </span><span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              18/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-19">
+          <div class="inner">
+            
+            <header><h1>三目运算符 | Ternary Operator</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">condition</span> <span class="p">?</span> <span class="n">when_true</span> <span class="p">:</span> <span class="n">when_false</span>
+<span class="lineno">2 </span>
+<span class="lineno">3 </span><span class="n">string</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="o">?</span> <span class="s2">&quot;Idiot.&quot;</span> <span class="p">:</span> <span class="s2">&quot;Clever&quot;</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              19/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-20">
+          <div class="inner">
+            
+            <header><h1>unless</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="k">unless</span> <span class="n">condition</span>
+<span class="lineno">2 </span>  <span class="n">do_other_thing</span>
+<span class="lineno">3 </span><span class="k">end</span>
+<span class="lineno">4 </span>
+<span class="lineno">5 </span><span class="nb">puts</span> <span class="s2">&quot;I am nil&quot;</span> <span class="k">unless</span> <span class="kp">nil</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              20/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-21">
+          <div class="inner">
+            
+            <header><h1>比较符 | Conditionals</h1></header>
+            
+            
+            <section><ul>
+<li>&lt;</li>
+<li>></li>
+<li>&lt;=</li>
+<li>=&gt;</li>
+<li>==</li>
+<li>!=</li>
+</ul>
+<h2>PS: ruby codes/class005/conditional.rb</h2>
+<p>逻辑运算符
+   * &amp;&amp;, and
+     &gt; true &amp;&amp; true
+       =&gt; true
+       true &amp;&amp; false
+       =&gt; false
+       false &amp;&amp; false
+       =&gt; false</p>
+<ul>
+<li>
+<p>||, or</p>
+<blockquote>
+<p>false || false
+    =&gt; false
+    other: true</p>
+</blockquote></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              21/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-22">
+          <div class="inner">
+            
+            
+            <section><p># 除了<strong>false</strong>和<strong>nil</strong>，其他的都是true</p>
+<blockquote>
+<p>In Ruby, every expression evaluates to true when used in flow control, except for false and nil.</p>
+</blockquote>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              22/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-23">
+          <div class="inner">
+            
+            <header><h1>小结：</h1></header>
+            
+            
+            <section><ul>
+<li>if ... else ... end</li>
+<li>unless ... else ... end</li>
+<li>case...when...else...end</li>
+<li>3 &gt; 2 ? true_part :false_part</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              23/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-24">
+          <div class="inner">
+            
+            <header><h1>循环</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              24/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-25">
+          <div class="inner">
+            
+            <header><h1>loop</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kp">loop</span> <span class="k">do</span>
+<span class="lineno">2 </span>  <span class="nb">puts</span> <span class="s2">&quot;它会不断的循环，直到你用 CTRL + C终止它&quot;</span>
+<span class="lineno">3 </span>  <span class="nb">sleep</span> <span class="mi">1</span>
+<span class="lineno">4 </span><span class="k">end</span>
+<span class="lineno">5 </span>
+<span class="lineno">6 </span><span class="kp">loop</span> <span class="k">do</span>
+<span class="lineno">7 </span>  <span class="nb">puts</span> <span class="s2">&quot;I am running&quot;</span>
+<span class="lineno">8 </span>  <span class="k">break</span> <span class="nb">gets</span><span class="o">.</span><span class="n">chomp</span> <span class="o">==</span> <span class="s2">&quot;q&quot;</span>
+<span class="lineno">9 </span><span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              25/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-26">
+          <div class="inner">
+            
+            <header><h1>while</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="k">while</span> <span class="n">condition</span>
+<span class="lineno">2 </span>  <span class="n">do_something</span>
+<span class="lineno">3 </span>  <span class="k">break</span> <span class="k">if</span> <span class="n">break_also_works</span>
+<span class="lineno">4 </span><span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              26/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-27">
+          <div class="inner">
+            
+            <header><h1>until</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="c1"># behavior like while not</span>
+<span class="lineno">2 </span><span class="k">until</span> <span class="n">condition</span>
+<span class="lineno">3 </span>  <span class="n">do_other_thing</span>
+<span class="lineno">4 </span><span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              27/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-28">
+          <div class="inner">
+            
+            <header><h1>do...while</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="k">begin</span>
+<span class="lineno">2 </span>  <span class="n">do_some_thing</span>
+<span class="lineno">3 </span><span class="k">end</span> <span class="k">while</span><span class="p">(</span><span class="n">condition</span><span class="p">)</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              28/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-29">
+          <div class="inner">
+            
+            <header><h1>for</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="n">a</span> <span class="o">=</span> <span class="nb">gets</span><span class="o">.</span><span class="n">chomp</span><span class="o">.</span><span class="n">to_i</span>
+<span class="lineno"> 2 </span>
+<span class="lineno"> 3 </span><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="o">..</span><span class="n">a</span> <span class="k">do</span>
+<span class="lineno"> 4 </span>  <span class="nb">puts</span> <span class="n">i</span>
+<span class="lineno"> 5 </span><span class="k">end</span>
+<span class="lineno"> 6 </span>
+<span class="lineno"> 7 </span><span class="n">arr</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span>
+<span class="lineno"> 8 </span>
+<span class="lineno"> 9 </span><span class="k">for</span> <span class="n">element</span> <span class="k">in</span> <span class="n">arr</span> <span class="k">do</span>
+<span class="lineno">10 </span>  <span class="nb">puts</span> <span class="n">element</span>
+<span class="lineno">11 </span><span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              29/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-30">
+          <div class="inner">
+            
+            <header><h1>Iterators</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">names</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Joe&#39;</span><span class="p">,</span> <span class="s1">&#39;Steve&#39;</span><span class="p">,</span> <span class="s1">&#39;Janice&#39;</span><span class="p">,</span> <span class="s1">&#39;Susan&#39;</span><span class="p">,</span> <span class="s1">&#39;Helen&#39;</span><span class="o">]</span>
+<span class="lineno">2 </span>
+<span class="lineno">3 </span><span class="n">names</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span> <span class="nb">puts</span> <span class="nb">name</span>  <span class="p">}</span>
+<span class="lineno">4 </span>
+<span class="lineno">5 </span><span class="n">names</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span>
+<span class="lineno">6 </span>  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2">. </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="lineno">7 </span>  <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="lineno">8 </span><span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              30/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-31">
+          <div class="inner">
+            
+            <header><h1>递归</h1></header>
+            
+            
+            <section><p><a href="https://v.qq.com/x/page/m0305q7iwsj.html">视频</a></p>
+<p>斐波那契数列的实现
+   0, 1, 1, 2, 3, 5, 8, 13..., 求第n个数的值</p>
+<div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="lineno">2 </span>  <span class="k">return</span> <span class="n">n</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+<span class="lineno">3 </span>  <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="lineno">4 </span><span class="k">end</span>
+</pre></div>
+
+<p>阶乘
+   fact(n) = n! = 1 x 2 x 3 x ... x (n-1) x n = (n-1)! x n = fact(n-1) x n</p>
+<div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="k">def</span> <span class="nf">fac</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="lineno">2 </span>  <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="lineno">3 </span>  <span class="n">n</span> <span class="o">*</span> <span class="n">fac</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="lineno">4 </span><span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              31/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-32">
+          <div class="inner">
+            
+            <header><h1>小技巧</h1></header>
+            
+            
+            <section><p>写do的时候一定记得写end</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              32/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-33">
+          <div class="inner">
+            
+            <header><h1>总结</h1></header>
+            
+            
+            <section><ul>
+<li>&lt;, &gt;, &lt;=, &gt;=,  ==, !=</li>
+<li>&amp;&amp;, ||, and, or</li>
+<li>if...end</li>
+<li>case...when...end</li>
+<li>unless...end</li>
+<li>until...end</li>
+<li>while...end</li>
+<li>loop do...end</li>
+<li>until...end</li>
+<li>each, map</li>
+<li>recursive</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              33/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-34">
+          <div class="inner">
+            
+            <header><h1>练习</h1></header>
+            
+            
+            <section><pre><code>&gt; PS: 别忘了用rubocop哦
+</code></pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              34/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class005.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-35">
+          <div class="inner">
+            
+            <header><h1>Thank You</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class005.md">markdowns/class005.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              35/35
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div id="toc" class="sidebar hidden">
+    <h2>Table of Contents</h2>
+    <table>
+      <caption>Table of Contents</caption>
+      
+      <tr id="toc-row-1">
+        <th><a href="#slide1">Flow control, Loops &amp; Iterators</a></th>
+        <td><a href="#slide1">1</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-2">
+        <th><a href="#slide2">知识点回顾</a></th>
+        <td><a href="#slide2">2</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-3">
+        <th><a href="#slide3">变量</a></th>
+        <td><a href="#slide3">3</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-4">
+        <th><a href="#slide4">常量</a></th>
+        <td><a href="#slide4">4</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-5">
+        <th><a href="#slide5">方法定义</a></th>
+        <td><a href="#slide5">5</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-6">
+        <th><a href="#slide6">Excersises Answer</a></th>
+        <td><a href="#slide6">6</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-7">
+        <th><a href="#slide7">more about Array</a></th>
+        <td><a href="#slide7">7</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-8">
+        <th><a href="#slide8">数组创建</a></th>
+        <td><a href="#slide8">8</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-9">
+        <th><a href="#slide9">数组取数</a></th>
+        <td><a href="#slide9">9</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-10">
+        <th><a href="#slide10">数组插入</a></th>
+        <td><a href="#slide10">10</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-11">
+        <th><a href="#slide11">数组比较</a></th>
+        <td><a href="#slide11">11</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-12">
+        <th><a href="#slide12">-</a></th>
+        <td><a href="#slide12">12</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-13">
+        <th><a href="#slide13">数组运算</a></th>
+        <td><a href="#slide13">13</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-14">
+        <th><a href="#slide14">并集| 和交集 &amp; 运算</a></th>
+        <td><a href="#slide14">14</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-15">
+        <th><a href="#slide15">Flow Control</a></th>
+        <td><a href="#slide15">15</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-16">
+        <th><a href="#slide16">-</a></th>
+        <td><a href="#slide16">16</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-17">
+        <th><a href="#slide17">条件表达式 | Condition Expressions</a></th>
+        <td><a href="#slide17">17</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-18">
+        <th><a href="#slide18">Case语句</a></th>
+        <td><a href="#slide18">18</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-19">
+        <th><a href="#slide19">三目运算符 | Ternary Operator</a></th>
+        <td><a href="#slide19">19</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-20">
+        <th><a href="#slide20">unless</a></th>
+        <td><a href="#slide20">20</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-21">
+        <th><a href="#slide21">比较符 | Conditionals</a></th>
+        <td><a href="#slide21">21</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-22">
+        <th><a href="#slide22">-</a></th>
+        <td><a href="#slide22">22</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-23">
+        <th><a href="#slide23">小结：</a></th>
+        <td><a href="#slide23">23</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-24">
+        <th><a href="#slide24">循环</a></th>
+        <td><a href="#slide24">24</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-25">
+        <th><a href="#slide25">loop</a></th>
+        <td><a href="#slide25">25</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-26">
+        <th><a href="#slide26">while</a></th>
+        <td><a href="#slide26">26</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-27">
+        <th><a href="#slide27">until</a></th>
+        <td><a href="#slide27">27</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-28">
+        <th><a href="#slide28">do...while</a></th>
+        <td><a href="#slide28">28</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-29">
+        <th><a href="#slide29">for</a></th>
+        <td><a href="#slide29">29</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-30">
+        <th><a href="#slide30">Iterators</a></th>
+        <td><a href="#slide30">30</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-31">
+        <th><a href="#slide31">递归</a></th>
+        <td><a href="#slide31">31</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-32">
+        <th><a href="#slide32">小技巧</a></th>
+        <td><a href="#slide32">32</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-33">
+        <th><a href="#slide33">总结</a></th>
+        <td><a href="#slide33">33</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-34">
+        <th><a href="#slide34">练习</a></th>
+        <td><a href="#slide34">34</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-35">
+        <th><a href="#slide35">Thank You</a></th>
+        <td><a href="#slide35">35</a></td>
+      </tr>
+      
+      
+    </table>
+  </div>
+  
+  <div id="help" class="sidebar hidden">
+    <h2>Help</h2>
+    <table>
+      <caption>Help</caption>
+      <tr>
+        <th>Table of Contents</th>
+        <td>t</td>
+      </tr>
+      <tr>
+        <th>Exposé</th>
+        <td>ESC</td>
+      </tr>
+      <tr>
+        <th>Full screen slides</th>
+        <td>e</td>
+      </tr>
+      <tr>
+        <th>Presenter View</th>
+        <td>p</td>
+      </tr>
+      <tr>
+        <th>Source Files</th>
+        <td>s</td>
+      </tr>
+      <tr>
+        <th>Slide Numbers</th>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Toggle screen blanking</th>
+        <td>b</td>
+      </tr>
+      <tr>
+        <th>Show/hide slide context</th>
+        <td>c</td>
+      </tr>
+      <tr>
+        <th>Notes</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Help</th>
+        <td>h</td>
+      </tr>
+    </table>
+  </div>
+  <script>main()</script>
+</body>
+</html>
