@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<!--
+  Copyright 2010 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  Original slides: Marcin Wichary (mwichary@google.com)
+  Modifications: Ernest Delgado (ernestd@google.com)
+                 Alex Russell (slightlyoff@chromium.org)
+
+  landslide modifications: Adam Zapletal (adamzap@gmail.com)
+                           Nicolas Perriault (nperriault@gmail.com)
+-->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Ruby On Rails</title>
+    <!-- Styles -->
+    
+    <link rel="stylesheet" media="print" href="file:///Library/Python/2.7/site-packages/landslide/themes/default/css/print.css">
+    <link rel="stylesheet" media="screen, projection" href="file:///Library/Python/2.7/site-packages/landslide/themes/default/css/screen.css">
+    
+    
+    <!-- /Styles -->
+    <!-- Javascripts -->
+    
+    <script type="text/javascript" src="file:///Library/Python/2.7/site-packages/landslide/themes/default/js/slides.js"></script>
+    
+    
+    
+    <!-- /Javascripts -->
+</head>
+<body>
+  <div id="blank"></div>
+  <div class="presentation">
+    <div id="current_presenter_notes">
+      <div id="presenter_note"></div>
+    </div>
+    <div class="slides">
+      
+      <!-- slide source: markdowns/class008.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-1">
+          <div class="inner">
+            
+            <header><h1>Ruby On Rails</h1></header>
+            
+            
+            <section><p>教材：<a href="https://railstutorial-china.org/book/">Ruby On Rails教程</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class008.md">markdowns/class008.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              1/6
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class008.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-2">
+          <div class="inner">
+            
+            <header><h1>MVC</h1></header>
+            
+            
+            <section><ul>
+<li>M： Model 模型</li>
+<li>C： Controller 控制器</li>
+<li>
+<p>V： View 视图</p>
+<blockquote>
+<p>MVC模式（Model–view–controller）是软件工程中的一种软件架构模式，把软件系统分为三个基本部分：模型（Model）、视图（View）和控制器（Controller）。</p>
+</blockquote>
+<p>MVC模式的目的是实现一种动态的程序设计，使后续对程序的修改和扩展简化，并且使程序某一部分的重复利用成为可能。</p>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class008.md">markdowns/class008.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              2/6
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class008.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-3">
+          <div class="inner">
+            
+            <header><h1>MVC</h1></header>
+            
+            
+            <section><ul>
+<li>控制器（Controller）- 负责转发请求，对请求进行处理。</li>
+<li>视图（View）        - 界面设计人员进行图形界面设计。</li>
+<li>模型（Model）       - 程序员编写程序应有的功能（实现算法等等）、数据库专家进行数据管理和数据库设计(可以实现具体的功能)。</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class008.md">markdowns/class008.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              3/6
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class008.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-4">
+          <div class="inner">
+            
+            <header><h1>Rails MVC</h1></header>
+            
+            
+            <section><p><img alt="" src="https://betterexplained.com/wp-content/uploads/rails/mvc-rails.png" /></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class008.md">markdowns/class008.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              4/6
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class008.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-5">
+          <div class="inner">
+            
+            <header><h1>Rails是怎么工作的</h1></header>
+            
+            
+            <section><p><img alt="" src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2012/10/mvc21-530x308.png" /></p>
+<p><a href="https://www.sitepoint.com/getting-started-with-mvc/">参考</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class008.md">markdowns/class008.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              5/6
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source:  -->
+      <div class="slide-wrapper">
+        <div class="slide slide-">
+          <div class="inner">
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="page_number">
+              /6
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class008.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-6">
+          <div class="inner">
+            
+            
+            <section><ol>
+<li>
+<p>通过浏览器访问： http://localhost/page/show/47</p>
+</li>
+<li>
+<p>Rails通过 config/routes.rb文件里的内容来确定访问那个Controller， 这里是   PagesController#show</p>
+</li>
+<li>
+<p>Controller Acts as Manager: 发送命令，返回结果</p>
+</li>
+<li>
+<p>Model： 代表数据和业务逻辑</p>
+</li>
+<li>
+<p>这里意味着从数据库取出id是47的博客</p>
+</li>
+<li>
+<p>Model返回从数据库获取的数据，然后把结果传递给Controller</p>
+</li>
+<li>
+<p>View： Controller调用app/views/pages/show.html.erb, 渲染HTML文件</p>
+</li>
+</ol>
+<p>8.controller 把渲染好的HTML返回给浏览器</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class008.md">markdowns/class008.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/6
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source:  -->
+      <div class="slide-wrapper">
+        <div class="slide slide-">
+          <div class="inner">
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="page_number">
+              /6
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div id="toc" class="sidebar hidden">
+    <h2>Table of Contents</h2>
+    <table>
+      <caption>Table of Contents</caption>
+      
+      <tr id="toc-row-1">
+        <th><a href="#slide1">Ruby On Rails</a></th>
+        <td><a href="#slide1">1</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-2">
+        <th><a href="#slide2">MVC</a></th>
+        <td><a href="#slide2">2</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-3">
+        <th><a href="#slide3">MVC</a></th>
+        <td><a href="#slide3">3</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-4">
+        <th><a href="#slide4">Rails MVC</a></th>
+        <td><a href="#slide4">4</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-5">
+        <th><a href="#slide5">Rails是怎么工作的</a></th>
+        <td><a href="#slide5">5</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-6">
+        <th><a href="#slide6">-</a></th>
+        <td><a href="#slide6">6</a></td>
+      </tr>
+      
+      
+    </table>
+  </div>
+  
+  <div id="help" class="sidebar hidden">
+    <h2>Help</h2>
+    <table>
+      <caption>Help</caption>
+      <tr>
+        <th>Table of Contents</th>
+        <td>t</td>
+      </tr>
+      <tr>
+        <th>Exposé</th>
+        <td>ESC</td>
+      </tr>
+      <tr>
+        <th>Full screen slides</th>
+        <td>e</td>
+      </tr>
+      <tr>
+        <th>Presenter View</th>
+        <td>p</td>
+      </tr>
+      <tr>
+        <th>Source Files</th>
+        <td>s</td>
+      </tr>
+      <tr>
+        <th>Slide Numbers</th>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Toggle screen blanking</th>
+        <td>b</td>
+      </tr>
+      <tr>
+        <th>Show/hide slide context</th>
+        <td>c</td>
+      </tr>
+      <tr>
+        <th>Notes</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Help</th>
+        <td>h</td>
+      </tr>
+    </table>
+  </div>
+  <script>main()</script>
+</body>
+</html>
