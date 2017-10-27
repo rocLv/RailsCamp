@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<!--
+  Copyright 2010 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  Original slides: Marcin Wichary (mwichary@google.com)
+  Modifications: Ernest Delgado (ernestd@google.com)
+                 Alex Russell (slightlyoff@chromium.org)
+
+  landslide modifications: Adam Zapletal (adamzap@gmail.com)
+                           Nicolas Perriault (nperriault@gmail.com)
+-->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>开发第一个玩具应用</title>
+    <!-- Styles -->
+    
+    <link rel="stylesheet" media="print" href="file:///Library/Python/2.7/site-packages/landslide/themes/default/css/print.css">
+    <link rel="stylesheet" media="screen, projection" href="file:///Library/Python/2.7/site-packages/landslide/themes/default/css/screen.css">
+    
+    
+    <!-- /Styles -->
+    <!-- Javascripts -->
+    
+    <script type="text/javascript" src="file:///Library/Python/2.7/site-packages/landslide/themes/default/js/slides.js"></script>
+    
+    
+    
+    <!-- /Javascripts -->
+</head>
+<body>
+  <div id="blank"></div>
+  <div class="presentation">
+    <div id="current_presenter_notes">
+      <div id="presenter_note"></div>
+    </div>
+    <div class="slides">
+      
+      <!-- slide source: markdowns/class009.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-1">
+          <div class="inner">
+            
+            <header><h1>开发第一个玩具应用</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class009.md">markdowns/class009.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              1/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class009.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-2">
+          <div class="inner">
+            
+            <header><h1>数据库范式</h1></header>
+            
+            
+            <section><p><a href="https://www.slideshare.net/jagaarj/database-design-normalization?from_action=save">PPT</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class009.md">markdowns/class009.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              2/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class009.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-3">
+          <div class="inner">
+            
+            <header><h1>范式的包含关系</h1></header>
+            
+            
+            <section><p>一个数据库设计如果符合第二范式，一定也符合第一范式。如果符合第三范式，一定也符合第二范式…</p>
+<p><img alt="" src="http://upload-images.jianshu.io/upload_images/1727535-580926986d188788.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" /></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class009.md">markdowns/class009.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              3/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class009.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-4">
+          <div class="inner">
+            
+            <header><h1>小结</h1></header>
+            
+            
+            <section><ul>
+<li>
+<p>第一范式：字段不可分割（原子）</p>
+</li>
+<li>
+<p>第二范式： 每一行都有主键</p>
+</li>
+<li>
+<p>第三范式：非主键不能互相依赖</p>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class009.md">markdowns/class009.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              4/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class009.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-5">
+          <div class="inner">
+            
+            <header><h1>表现层状态转化（REST）</h1></header>
+            
+            
+            <section><p>如果阅读过一些 Ruby on Rails Web 开发相关的资料，你会发现很多地方都提到了“REST”，它是“表现层状态转化”（REpresentational State Transfer）的简称。REST 是一种架构风格，用于开发分布式、基于网络的系统和软件应用，例如万维网和 Web 应用。REST 理论很抽象，在 Rails 应用中，REST 意味着大多数组件（例如用户和微博）都被模型化，变成资源（resource），可以创建（create）、读取（read）、更新（update）和删除（delete）。这些操作与关系型数据库中的 CRUD 操作和 HTTP 请求方法（POST、GET、PATCH 和 DELETE）对应。3.3 节，特别是旁注 3.2，将更详细地介绍 HTTP 请求。</p>
+<p>作为 Rails 应用开发者，REST 开发方式能帮助你决定编写哪些控制器和动作：你只需简单地把可以创建、读取、更新和删除的资源理清就可以了。对本章的“用户”和“微博”来说，这一过程非常明确，因为它们都是很自然的资源形式。在第 14 章将看到，使用 REST 架构可以通过一种自然而便捷的方式解决棘手问题（“关注用户”功能）。</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class009.md">markdowns/class009.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              5/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class009.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-6">
+          <div class="inner">
+            
+            <header><h1>想想微博里面有什么资源？</h1></header>
+            
+            
+            <section><ul>
+<li>我们要存储那些信息？</li>
+<li>它们之间有什么关系</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class009.md">markdowns/class009.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class009.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-7">
+          <div class="inner">
+            
+            <header><h1>现场演示</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class009.md">markdowns/class009.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              7/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class009.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-8">
+          <div class="inner">
+            
+            <header><h1>总结</h1></header>
+            
+            
+            <section><ul>
+<li></li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class009.md">markdowns/class009.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              8/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class009.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-9">
+          <div class="inner">
+            
+            <header><h1>Thank you</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class009.md">markdowns/class009.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              9/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source:  -->
+      <div class="slide-wrapper">
+        <div class="slide slide-">
+          <div class="inner">
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="page_number">
+              /9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div id="toc" class="sidebar hidden">
+    <h2>Table of Contents</h2>
+    <table>
+      <caption>Table of Contents</caption>
+      
+      <tr id="toc-row-1">
+        <th><a href="#slide1">开发第一个玩具应用</a></th>
+        <td><a href="#slide1">1</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-2">
+        <th><a href="#slide2">数据库范式</a></th>
+        <td><a href="#slide2">2</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-3">
+        <th><a href="#slide3">范式的包含关系</a></th>
+        <td><a href="#slide3">3</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-4">
+        <th><a href="#slide4">小结</a></th>
+        <td><a href="#slide4">4</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-5">
+        <th><a href="#slide5">表现层状态转化（REST）</a></th>
+        <td><a href="#slide5">5</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-6">
+        <th><a href="#slide6">想想微博里面有什么资源？</a></th>
+        <td><a href="#slide6">6</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-7">
+        <th><a href="#slide7">现场演示</a></th>
+        <td><a href="#slide7">7</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-8">
+        <th><a href="#slide8">总结</a></th>
+        <td><a href="#slide8">8</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-9">
+        <th><a href="#slide9">Thank you</a></th>
+        <td><a href="#slide9">9</a></td>
+      </tr>
+      
+      
+    </table>
+  </div>
+  
+  <div id="help" class="sidebar hidden">
+    <h2>Help</h2>
+    <table>
+      <caption>Help</caption>
+      <tr>
+        <th>Table of Contents</th>
+        <td>t</td>
+      </tr>
+      <tr>
+        <th>Exposé</th>
+        <td>ESC</td>
+      </tr>
+      <tr>
+        <th>Full screen slides</th>
+        <td>e</td>
+      </tr>
+      <tr>
+        <th>Presenter View</th>
+        <td>p</td>
+      </tr>
+      <tr>
+        <th>Source Files</th>
+        <td>s</td>
+      </tr>
+      <tr>
+        <th>Slide Numbers</th>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Toggle screen blanking</th>
+        <td>b</td>
+      </tr>
+      <tr>
+        <th>Show/hide slide context</th>
+        <td>c</td>
+      </tr>
+      <tr>
+        <th>Notes</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Help</th>
+        <td>h</td>
+      </tr>
+    </table>
+  </div>
+  <script>main()</script>
+</body>
+</html>

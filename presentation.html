@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<!--
+  Copyright 2010 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  Original slides: Marcin Wichary (mwichary@google.com)
+  Modifications: Ernest Delgado (ernestd@google.com)
+                 Alex Russell (slightlyoff@chromium.org)
+
+  landslide modifications: Adam Zapletal (adamzap@gmail.com)
+                           Nicolas Perriault (nperriault@gmail.com)
+-->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Postgresql数据库</title>
+    <!-- Styles -->
+    
+    <link rel="stylesheet" media="print" href="file:///Library/Python/2.7/site-packages/landslide/themes/default/css/print.css">
+    <link rel="stylesheet" media="screen, projection" href="file:///Library/Python/2.7/site-packages/landslide/themes/default/css/screen.css">
+    
+    
+    <!-- /Styles -->
+    <!-- Javascripts -->
+    
+    <script type="text/javascript" src="file:///Library/Python/2.7/site-packages/landslide/themes/default/js/slides.js"></script>
+    
+    
+    
+    <!-- /Javascripts -->
+</head>
+<body>
+  <div id="blank"></div>
+  <div class="presentation">
+    <div id="current_presenter_notes">
+      <div id="presenter_note"></div>
+    </div>
+    <div class="slides">
+      
+      <!-- slide source: markdowns/class010.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-1">
+          <div class="inner">
+            
+            <header><h1>Postgresql数据库</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class010.md">markdowns/class010.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              1/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class010.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-2">
+          <div class="inner">
+            
+            <header><h1>SQL GROUP BY语句</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class010.md">markdowns/class010.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              2/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class010.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-3">
+          <div class="inner">
+            
+            <header><h1>SQL GROUP BY 语句</h1></header>
+            
+            
+            <section><p><strong>合计函数 (比如 SUM) 常常需要添加 GROUP BY 语句。</strong></p>
+
+<h2>GROUP BY 语句</h2>
+
+<p>GROUP BY 语句用于结合合计函数，根据一个或多个列对结果集进行分组。</p>
+
+<h3>SQL GROUP BY 语法</h3>
+
+<pre>SELECT column_name, aggregate_function(column_name)
+FROM table_name
+WHERE column_name operator value
+GROUP BY column_name
+</pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class010.md">markdowns/class010.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              3/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class010.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-4">
+          <div class="inner">
+            
+            <header><h2>SQL GROUP BY 实例</h2></header>
+            
+            
+            <section><p>我们拥有下面这个 "Orders" 表：</p>
+
+        <table class="dataintable">
+          <tbody><tr>
+            <th>O_Id</th>
+            <th>OrderDate</th>
+            <th>OrderPrice</th>
+            <th>Customer</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2008/12/29</td>
+            <td>1000</td>
+            <td>Bush</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>2008/11/23</td>
+            <td>1600</td>
+            <td>Carter</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>2008/10/05</td>
+            <td>700</td>
+            <td>Bush</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>2008/09/28</td>
+            <td>300</td>
+            <td>Bush</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>2008/08/06</td>
+            <td>2000</td>
+            <td>Adams</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>2008/07/21</td>
+            <td>100</td>
+            <td>Carter</td>
+          </tr>
+        </tbody></table>
+
+        <p>现在，我们希望查找每个客户的总金额（总订单）。</p>
+
+        <p>我们想要使用 GROUP BY 语句对客户进行组合。</p>
+
+        <p>我们使用下列 SQL 语句：</p>
+
+        <pre>SELECT Customer,SUM(OrderPrice) FROM Orders
+        GROUP BY Customer
+        </pre>
+    </div>
+
+</div></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class010.md">markdowns/class010.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              4/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class010.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-5">
+          <div class="inner">
+            
+            <header><h1>SQL HAVING 子句</h1></header>
+            
+            
+            <section><div>
+    <h2>HAVING 子句</h2>
+    <p>在 SQL 中增加 HAVING 子句原因是，WHERE 关键字无法与合计函数一起使用。</p>
+    <h3>SQL HAVING 语法</h3>
+    <pre>SELECT column_name, aggregate_function(column_name)
+    FROM table_name
+    WHERE column_name operator value
+    GROUP BY column_name
+    HAVING aggregate_function(column_name) operator value
+    </pre>
+</div></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class010.md">markdowns/class010.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              5/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class010.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-6">
+          <div class="inner">
+            
+            <header><h2>SQL HAVING 实例</h2></header>
+            
+            
+            <section><p>我们拥有下面这个 "Orders" 表：</p>
+
+<table class="dataintable">
+  <tbody><tr>
+    <th>O_Id</th>
+    <th>OrderDate</th>
+    <th>OrderPrice</th>
+    <th>Customer</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>2008/12/29</td>
+    <td>1000</td>
+    <td>Bush</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>2008/11/23</td>
+    <td>1600</td>
+    <td>Carter</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>2008/10/05</td>
+    <td>700</td>
+    <td>Bush</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>2008/09/28</td>
+    <td>300</td>
+    <td>Bush</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>2008/08/06</td>
+    <td>2000</td>
+    <td>Adams</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>2008/07/21</td>
+    <td>100</td>
+    <td>Carter</td>
+  </tr>
+</tbody></table>
+
+<p>现在，我们希望查找订单总金额少于 2000 的客户。</p>
+
+<p>我们使用如下 SQL 语句：</p>
+
+<pre>SELECT Customer,SUM(OrderPrice) FROM Orders
+GROUP BY Customer
+HAVING SUM(OrderPrice)&lt;2000
+</pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class010.md">markdowns/class010.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class010.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-7">
+          <div class="inner">
+            
+            <header><h1>结果集类似</h1></header>
+            
+            
+            <section><table class="dataintable">
+  <tbody><tr>
+    <th>Customer</th>
+    <th>SUM(OrderPrice)</th>
+  </tr>
+  <tr>
+    <td>Carter</td>
+    <td>1700</td>
+  </tr>
+</tbody></table>
+
+<p>现在我们希望查找客户 "Bush" 或 "Adams" 拥有超过 1500 的订单总金额。</p>
+
+<p>我们在 SQL 语句中增加了一个普通的 WHERE 子句：</p>
+
+<pre>SELECT Customer,SUM(OrderPrice) FROM Orders
+WHERE Customer='Bush' OR Customer='Adams'
+GROUP BY Customer
+HAVING SUM(OrderPrice)&gt;1500
+</pre>
+
+<p>结果集：</p>
+
+<table class="dataintable">
+  <tbody><tr>
+    <th>Customer</th>
+    <th>SUM(OrderPrice)</th>
+  </tr>
+  <tr>
+    <td>Bush</td>
+    <td>2000</td>
+  </tr>
+  <tr>
+    <td>Adams</td>
+    <td>2000</td>
+  </tr>
+</tbody></table></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class010.md">markdowns/class010.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              7/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class010.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-8">
+          <div class="inner">
+            
+            <header><h1>SQL JOIN</h1></header>
+            
+            
+            <section><p>SQL join 用于根据两个或多个表中的列之间的关系，从这些表中查询数据。</p>
+<p>Join 和 Key
+有时为了得到完整的结果，我们需要从两个或更多的表中获取结果。我们就需要执行
+join。
+数据库中的表可通过键将彼此联系起来。主键（Primary
+Key）是一个列，在这个列中的每一行的值都是唯一的。在表中，每个主键的值都是唯一的。这样做的目的是在不重复每个表中的所有数据的情况下，把表间的数据交叉捆绑在一起。</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class010.md">markdowns/class010.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              8/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: markdowns/class010.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-9">
+          <div class="inner">
+            
+            <header><h1>LEFT JOIN &amp; Right Join &amp; Inner Join</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="markdowns/class010.md">markdowns/class010.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              9/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source:  -->
+      <div class="slide-wrapper">
+        <div class="slide slide-">
+          <div class="inner">
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="page_number">
+              /9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div id="toc" class="sidebar hidden">
+    <h2>Table of Contents</h2>
+    <table>
+      <caption>Table of Contents</caption>
+      
+      <tr id="toc-row-1">
+        <th><a href="#slide1">Postgresql数据库</a></th>
+        <td><a href="#slide1">1</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-2">
+        <th><a href="#slide2">SQL GROUP BY语句</a></th>
+        <td><a href="#slide2">2</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-3">
+        <th><a href="#slide3">SQL GROUP BY 语句</a></th>
+        <td><a href="#slide3">3</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-4" class="sub">
+          <th><a href="#slide4">SQL GROUP BY 实例</a></th>
+          <td><a href="#slide4">4</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-5">
+        <th><a href="#slide5">SQL HAVING 子句</a></th>
+        <td><a href="#slide5">5</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-6" class="sub">
+          <th><a href="#slide6">SQL HAVING 实例</a></th>
+          <td><a href="#slide6">6</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-7">
+        <th><a href="#slide7">结果集类似</a></th>
+        <td><a href="#slide7">7</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-8">
+        <th><a href="#slide8">SQL JOIN</a></th>
+        <td><a href="#slide8">8</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-9">
+        <th><a href="#slide9">LEFT JOIN &amp; Right Join &amp; Inner Join</a></th>
+        <td><a href="#slide9">9</a></td>
+      </tr>
+      
+      
+    </table>
+  </div>
+  
+  <div id="help" class="sidebar hidden">
+    <h2>Help</h2>
+    <table>
+      <caption>Help</caption>
+      <tr>
+        <th>Table of Contents</th>
+        <td>t</td>
+      </tr>
+      <tr>
+        <th>Exposé</th>
+        <td>ESC</td>
+      </tr>
+      <tr>
+        <th>Full screen slides</th>
+        <td>e</td>
+      </tr>
+      <tr>
+        <th>Presenter View</th>
+        <td>p</td>
+      </tr>
+      <tr>
+        <th>Source Files</th>
+        <td>s</td>
+      </tr>
+      <tr>
+        <th>Slide Numbers</th>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Toggle screen blanking</th>
+        <td>b</td>
+      </tr>
+      <tr>
+        <th>Show/hide slide context</th>
+        <td>c</td>
+      </tr>
+      <tr>
+        <th>Notes</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Help</th>
+        <td>h</td>
+      </tr>
+    </table>
+  </div>
+  <script>main()</script>
+</body>
+</html>
